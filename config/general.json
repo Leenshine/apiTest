@@ -1,0 +1,11 @@
+{
+  "uat":{
+    "env_path" : "https://uat-api.3ona.co",
+    "version": "v2"
+  },
+
+  "prod":{
+    "env_path" : "https://uat-api.3ona.co",
+    "version": "v2"
+  }
+}
