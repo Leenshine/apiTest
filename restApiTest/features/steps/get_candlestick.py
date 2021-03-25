@@ -53,7 +53,7 @@ def verify_kline_data_by_selected_date(context, specified_time):
     current_data = context.rsp_data.get("result").get("data")
     for data in current_data:
         if data['t'] == dt:
-            assert expected_data == data, f"current_data : {expected_data} not expexted{data}"
+            assert expected_data == data, f"current_data:{expected_data} not expexted:{data}"
             break
 
 
