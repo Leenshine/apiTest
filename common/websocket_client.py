@@ -49,9 +49,16 @@ class WebSocketCli:
 
         return self.rsp
 
-
-
-
+    # def get2(self, req):
+    #     print("ws cli get ...")
+    #     self.send(req)
+    #     raw_rsp_data = self.ws_cli.recv()
+    #     self.rsp["initial_rsp"] = json.loads(raw_rsp_data)
+    #
+    #     raw_rsp_data = self.ws_cli.recv()
+    #     self.rsp["real_rsp"] = json.loads(raw_rsp_data)
+    #
+    #     return self.rsp
 
 
     def do_hb(self, json_rsp_data):
@@ -64,7 +71,6 @@ class WebSocketCli:
 
     def do_subscribe(self, json_rsp_data):
         print("do subscribe ...")
-        print(json_rsp_data)
         if json_rsp_data.get("id", None) != None:
             self.rsp["initial_rsp"] = json_rsp_data
         else:
@@ -80,7 +86,7 @@ if __name__ == "__main__":
         "id": 11,
         "method": "subscribe",
         "params": {"channels": ["book.ETH_CRO.150"]},
-        "nonce": int(time.time() * 1000),  # 1587523073344,
+        "nonce": 1587523073344,
     }
     rsp = cli.get(req)
     time.sleep(10)
