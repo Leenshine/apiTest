@@ -17,7 +17,7 @@ Feature: book.{instrument_name}.{depth}
 
 
 
-  Scenario Outline: Verify book.{instrument_name}.{depth} invalid
+  Scenario Outline: Verify book.{instrument_name}.{depth} with invalid data
     Given User send request with "<instrument_name>" and "<depth>"
     Then verify the invalid response message
 

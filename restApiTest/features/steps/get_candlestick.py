@@ -3,7 +3,6 @@ from common.utils import *
 import requests
 
 
-
 @given('User send request with "{instrument_name}" and "{interval}"')
 def user_send_request(context, instrument_name, interval):
     context.instrument_name = instrument_name
@@ -48,7 +47,6 @@ def is_intercal_correct(context):
 @then('verify the k-line data is correct at the "{specified_time}"')
 def verify_kline_data_by_selected_date(context, specified_time):
     dt = unix_time(specified_time)
-    # expected_data = {'t': 1593043200000, 'o': 25077784.1, 'h': 2084.1, 'l': 1825.0, 'c': 1825.0, 'v': 315.166}
     expected_data = {'t': 1593043200000, 'o': 2084.1, 'h': 2084.1, 'l': 1825.0, 'c': 1825.0, 'v': 315.166}
     current_data = context.rsp_data.get("result").get("data")
     for data in current_data:
@@ -56,6 +54,17 @@ def verify_kline_data_by_selected_date(context, specified_time):
             assert expected_data == data, f"current_data:{expected_data} not expexted:{data}"
             break
 
+
+@then('check the response is invalid')
+def check_invalid_instrument(context):
+    current_data = context.rsp_data.get("result").get("data")
+    assert current_data == None
+
+
+@then('check the response is invalid interval')
+def check_invalid_interval(context):
+    current_code = context.rsp_data.get('code')
+    assert current_code != 0
 
 
 
