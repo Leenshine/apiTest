@@ -7,24 +7,25 @@
 ```
 --- cryptoTest
 | ---- common
-		| ---- utils.py												公用方法
-		| ---- websocket_client.py							封装websocket client
+	| ---- utils.py								公用方法
+	| ---- websocket_client.py					封装websocket client
 | ----config
-		| ---- api_name.json									 rest接口方法名称
-		| ---- general.json										rest_api  信息
-		| ---- websocket_general.json					websocket_api  信息
-| ----report													测试报告
+	| ---- api_name.json						rest接口方法名称
+	| ---- general.json							rest_api信息
+	| ---- websocket_general.json				websocket_api信息
+| ----report									测试报告
 | ----restApiTest
-		| ---- features
-				| ---- steps
-						| ---- get_candlestick.py			测试用例步骤实现
-				| ---- get_candlestick.feature				testcase用例描述
+	| ---- features
+		| ---- steps
+			| ---- get_candlestick.py			测试用例步骤实现
+		| ---- get_candlestick.feature			testcase用例描述
 | ----webSocketTest
-		| ---- features
-				| ---- steps
-						| ---- book_instrument.py			测试用例步骤实现
-				| ---- book_instrument.feature				testcase用例描述
-| ----requirements.txt								依赖包信息
+	| ---- features
+		| ---- steps
+			| ---- book_instrument.py			测试用例步骤实现
+		| ---- book_instrument.feature			testcase用例描述
+		| ---- enviroment.py                    实现每个scenario执行前后的操作
+| ----requirements.txt							依赖包信息
 
 ```
 ### 运行
