@@ -5,13 +5,12 @@ from websocket import create_connection
 
 
 class WebSocketCli:
-    running = False
-    ws_cli = None
-    rsp = {}
 
     def __init__(self, api_url):
-        self.recv_list = []
         self.api_url = api_url
+        self.running = False
+        self.ws_cli = None
+        self.rsp = {}
 
     def connect(self):
         self.ws_cli = create_connection(self.api_url)
@@ -30,12 +29,16 @@ class WebSocketCli:
         self.ws_cli.send(json.dumps(raw_req))
         print("send completed.")
 
-    def get(self, req):
+    def get(self, req, timeout=10):
         print("ws cli get ...")
         self.send(req)
 
         print("ws cli recv ...")
+        end_time = time.time() + timeout
         while self.running:
+            if end_time < time.time():
+                print('request timeout!!!')
+                break
             raw_rsp_data = self.ws_cli.recv()
             json_rsp_data = json.loads(raw_rsp_data)
 
@@ -77,18 +80,3 @@ class WebSocketCli:
             self.rsp["real_rsp"] = json_rsp_data
             self.running = False
 
-
-if __name__ == "__main__":
-    cli = WebSocketCli("wss://uat-stream.3ona.co/v2/market")
-    cli.connect()
-
-    req = {
-        "id": 11,
-        "method": "subscribe",
-        "params": {"channels": ["book.ETH_CRO.150"]},
-        "nonce": 1587523073344,
-    }
-    rsp = cli.get(req)
-    time.sleep(10)
-    print(rsp)
-    cli.close()

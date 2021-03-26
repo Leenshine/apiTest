@@ -22,6 +22,9 @@ def get_config(env, parameter, file_name):
 def get_rest_config(env, parameter):
     return get_config(env, parameter, 'general.json')
 
+def get_websocket_config(env, parameter):
+    return get_config(env, parameter, 'websocket_general.json')
+
 
 def get_api_name(name):
     json_file_path = os.path.join(root_path, 'config', "api_name.json")

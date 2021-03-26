@@ -1,0 +1,12 @@
+
+
+{
+  "uat":{
+    "env_path" : "wss://uat-stream.3ona.co/v2/market"
+  },
+
+
+  "prod":{
+    "env_path" : "wss://stream.crypto.com/v2/market"
+  }
+}

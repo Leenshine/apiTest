@@ -13,4 +13,4 @@ Feature: Get Candlestick
     Examples:
       |instrument_name|interval|response_status|response_code|response_method|specified_time|
       |ETH_CRO        |7D      |200            |0            |public/get-candlestick|2020-06-25 08:00:00|
-#      |ETH_CRO        |7D      |200            |0            |public/get-candlestick|2020-06-25 08:00:00|
+      |ETH_CRO        |7D      |200            |0            |public/get-candlestick|2020-06-25 08:00:00|
